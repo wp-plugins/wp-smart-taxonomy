@@ -19,8 +19,6 @@ class DC_Wp_Smart_Taxonomy {
 	
 	public $settings;
 	
-	public $license;
-	
 	public $dc_wp_fields;
 
 	public function __construct($file) {
@@ -50,12 +48,6 @@ class DC_Wp_Smart_Taxonomy {
 		if (is_admin()) {
 			$this->load_class('admin');
 			$this->admin = new DC_Wp_Smart_Taxonomy_Admin();
-		}
-
-		// DC License Activation
-		if (is_admin()) {
-		  $this->load_class('license');
-		  $this->license = DC_Wp_Smart_Taxonomy_LICENSE();
 		}
 
 		// DC Wp Fields
@@ -92,10 +84,6 @@ class DC_Wp_Smart_Taxonomy {
   function activate_dc_WP_Smart_Taxonomy() {
     global $DC_Wp_Smart_Taxonomy;
     
-    // License Activation
-    $DC_Wp_Smart_Taxonomy->load_class('license');
-    DC_Wp_Smart_Taxonomy_LICENSE()->activation();
-    
     if(!get_option('dc_dc_WP_ST_general_settings_name')) update_option('dc_dc_WP_ST_general_settings_name', array("is_enable" => "Enable", "is_title" => "Title", "is_tag" => "Tag"));
     update_option( 'dc_WP_Smart_Taxonomy_installed', 1 );
   }
@@ -109,10 +97,6 @@ class DC_Wp_Smart_Taxonomy {
   function deactivate_dc_WP_Smart_Taxonomy() {
     global $DC_Wp_Smart_Taxonomy;
     delete_option( 'dc_WP_Smart_Taxonomy_installed' );
-    
-    // License Deactivation
-    $DC_Wp_Smart_Taxonomy->load_class('license');
-    DC_Wp_Smart_Taxonomy_LICENSE()->uninstall();
   }
 	
 	/** Cache Helpers *********************************************************/
