@@ -1,10 +1,10 @@
 === WP Smart Taxonomy ===
 Contributors: Dualcube
 Donate link: http://dualcube.com/
-Tags: taxonomy, category, smart, collection, smart taxonomy, smart collection, smart category
+Tags: automatic, taxonomy, category, categories, smart, collection, smart taxonomy, smart collection, smart category, group, groups, smart grouping, collection of posts, smart group, post collection, post group, blog category, post, posts
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,7 +60,10 @@ No. It presently works with default Wordpress posts and categories. Keep a look 
 = 1.0.0 =
 * Initial release.
 
+= 1.0.1 =
+* Minor Bug Fix.
+
 
 ==Upgrade Notice==
 
-WP Smart Taxonomy was installed successfully.
+Minor Bug Fix.
