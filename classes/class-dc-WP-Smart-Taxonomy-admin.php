@@ -7,7 +7,7 @@ class DC_Wp_Smart_Taxonomy_Admin {
 		//admin script and style
 		add_action('admin_enqueue_scripts', array(&$this, 'enqueue_admin_script'));
 		
-		add_action('dc_WP_Smart_Taxonomy_dualcube_admin_footer', array(&$this, 'dualcube_admin_footer_for_dc_WP_Smart_Taxonomy'));
+		add_action('dc_WP_ST_dualcube_admin_footer', array(&$this, 'dualcube_admin_footer_for_dc_WP_Smart_Taxonomy'));
 		
 		add_action( 'save_post', array(&$this, 'assign_smart_taxonomy') );
 
@@ -63,10 +63,17 @@ class DC_Wp_Smart_Taxonomy_Admin {
     if(!empty($smart_cats)) {
       $smart_cats = array_map('intval', $smart_cats);
       $smart_cats = array_unique( $smart_cats );
-      if($smart_cat_settings['is_append'])
-        wp_set_object_terms( $post_id, $smart_cats, 'category', true );
-      else
-        wp_set_object_terms( $post_id, $smart_cats, 'category' );
+      $old_smart_cats = (get_post_meta($post_id, '_smart_cats', true)) ? get_post_meta($post_id, '_smart_cats', true) : array();
+      if(!empty($old_smart_cats)) wp_remove_object_terms( $post_id, $old_smart_cats, 'category' );
+      
+      if($smart_cat_settings['is_append']) {
+        $smart_cats = array_merge((array)$smart_cats, (array)$old_smart_cats);
+        $smart_cats = array_unique( $smart_cats );
+      }
+        
+      wp_set_object_terms( $post_id, $smart_cats, 'category', true );
+        
+      update_post_meta($post_id, '_smart_cats', $smart_cats);
     }
     
 	}
@@ -97,7 +104,7 @@ class DC_Wp_Smart_Taxonomy_Admin {
 		$screen = get_current_screen();
 		
 		// Enqueue admin script and stylesheet from here
-		if (in_array( $screen->id, array( 'toplevel_page_dc-WP-Smart-Taxonomy-setting-admin' ))) :   
+		if (in_array( $screen->id, array( 'toplevel_page_dc-WP-ST-setting-admin' ))) :   
 		  $DC_Wp_Smart_Taxonomy->library->load_qtip_lib();
 		  $DC_Wp_Smart_Taxonomy->library->load_upload_lib();
 		  $DC_Wp_Smart_Taxonomy->library->load_colorpicker_lib();

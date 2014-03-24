@@ -70,7 +70,7 @@ class DC_Wp_Smart_Taxonomy_License {
 			/**
 			 * Set all software update data here
 			 */
-			$this->license_plugin_name 			= 'WP_Smart_Taxonomy/WP_Smart_Taxonomy.php'; // same as plugin slug. if a theme use a theme name like 'twentyeleven'
+			$this->license_plugin_name 			= 'wp-smart-taxonomy/WP_Smart_Taxonomy.php'; // same as plugin slug. if a theme use a theme name like 'twentyeleven'
 			$this->license_product_id 			= get_option( $this->license_product_id_key ); // Software Title
 			$this->license_domain 				= site_url(); // blog domain name
 			$this->license_software_version 	= $DC_Wp_Smart_Taxonomy->version; // The software version

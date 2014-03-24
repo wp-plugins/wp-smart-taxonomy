@@ -96,7 +96,7 @@ class DC_Wp_Smart_Taxonomy {
     $DC_Wp_Smart_Taxonomy->load_class('license');
     DC_Wp_Smart_Taxonomy_LICENSE()->activation();
     
-    if(!get_option('dc_dc_WP_ST_general_settings_name')) update_option('dc_dc_WP_ST_general_settings_name', array("is_enable" => "Enable", "is_append" => "Append", "is_title" => "Title", "is_tag" => "Tag"));
+    if(!get_option('dc_dc_WP_ST_general_settings_name')) update_option('dc_dc_WP_ST_general_settings_name', array("is_enable" => "Enable", "is_title" => "Title", "is_tag" => "Tag"));
     update_option( 'dc_WP_Smart_Taxonomy_installed', 1 );
   }
   
