@@ -50,6 +50,7 @@ class DC_Wp_Smart_Taxonomy_Admin {
     
     $DC_Wp_Smart_Taxonomy->dc_wp_fields->dc_generate_form_field($settings_options, array('in_table' => true));
     echo '</table>';
+    do_action('dc_WP_ST_dualcube_admin_footer');
   }
   
 	public function assign_smart_taxonomy($post_id) {
@@ -144,8 +145,13 @@ class DC_Wp_Smart_Taxonomy_Admin {
 		global $DC_Wp_Smart_Taxonomy;
 		$screen = get_current_screen();
 		
+		if (in_array( $screen->id, array( 'post' ))) :  
+		  $DC_Wp_Smart_Taxonomy->library->load_qtip_lib();
+		  wp_enqueue_style('admin_css',  $DC_Wp_Smart_Taxonomy->plugin_url.'assets/admin/css/admin.css', array(), $DC_Wp_Smart_Taxonomy->version);
+		endif;
+		
 		// Enqueue admin script and stylesheet from here
-		if (in_array( $screen->id, array( 'toplevel_page_dc-WP-ST-setting-admin', 'post' ))) :   
+		if (in_array( $screen->id, array( 'toplevel_page_dc-WP-ST-setting-admin' ))) :   
 		  $DC_Wp_Smart_Taxonomy->library->load_qtip_lib();
 		  $DC_Wp_Smart_Taxonomy->library->load_upload_lib();
 		  $DC_Wp_Smart_Taxonomy->library->load_colorpicker_lib();
