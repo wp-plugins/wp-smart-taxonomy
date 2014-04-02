@@ -55,16 +55,20 @@ class DC_Wp_Smart_Taxonomy_Admin {
   
 	public function assign_smart_taxonomy($post_id) {
 	  
-	  // If this is just a revision, don't send the email.
+	  // If this is just a autosave, don't do anything
+	  if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+			return $post_id;
+	  
+	  // If this is just a revision, don't do anything
     if ( wp_is_post_revision( $post_id ) )
-      return;
-  
+      return $post_id;
+    
     if( get_post_type($post_id) != 'post' )
-      return;
+      return $post_id;
     
     $post_categories = get_terms( 'category', array( 'hide_empty' => 0 ) );
     if(count($post_categories) == 0)
-      return;
+      return $post_id;
     
     $smart_cat_settings = $_POST['smart_cat_settings'];
     if(!$smart_cat_settings) $smart_cat_settings = get_WP_Smart_Taxonomy_settings('', 'dc_WP_ST_general');
@@ -75,7 +79,7 @@ class DC_Wp_Smart_Taxonomy_Admin {
     if(!empty($old_smart_cats)) wp_remove_object_terms( $post_id, $old_smart_cats, 'category' );
     
     if(!$smart_cat_settings['is_enable'])
-      return;
+      return $post_id;
     
     $post_title = get_the_title( $post_id );
     $post_tags = wp_get_post_tags( $post_id );
@@ -118,6 +122,7 @@ class DC_Wp_Smart_Taxonomy_Admin {
       update_post_meta($post_id, '_smart_cats', $smart_cats);
     }
     
+    return $post_id;
 	}
 
 	function load_class($class_name = '') {
