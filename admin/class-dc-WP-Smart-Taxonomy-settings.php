@@ -141,7 +141,7 @@ class DC_Wp_Smart_Taxonomy_Settings {
         if(isset($section['fields'])) {
           foreach($section['fields'] as $fieldID => $field) {
             if(isset($field['type'])) {
-              $DC_Wp_Smart_Taxonomy->dc_wp_fields->check_field_id_name($fieldID, $field);
+              $field = $DC_Wp_Smart_Taxonomy->dc_wp_fields->check_field_id_name($fieldID, $field);
               $field['tab'] = $tab_options['tab'];
               $callbak = $this->get_field_callback_type($field['type']);
               if(!empty($callbak)) {

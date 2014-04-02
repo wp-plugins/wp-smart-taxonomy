@@ -4,7 +4,7 @@ Donate link: http://dualcube.com/
 Tags: automatic, taxonomy, category, categories, smart, collection, smart taxonomy, smart collection, smart category, group, groups, smart grouping, collection of posts, smart group, post collection, post group, blog category, post, posts
 Requires at least: 3.0
 Tested up to: 3.8.1
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,9 @@ If you are looking for a Woocommerce compatible plugin, check out [Woocommerce S
 = 1.0.4 =
 * Minor tweaks to code.
 
+= 1.0.5 =
+* Minor tweaks to code.
+
 
 ==Upgrade Notice==
 
@@ -94,4 +97,7 @@ If you are looking for a Woocommerce compatible plugin, check out [Woocommerce S
 * Feature Enhancement - Now the settings can be overriden for individual products.
 
 = 1.0.4 =
+* Minor tweaks to code.
+
+= 1.0.5 =
 * Minor tweaks to code.
