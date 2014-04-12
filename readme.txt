@@ -3,8 +3,8 @@ Contributors: Dualcube
 Donate link: http://dualcube.com/
 Tags: automatic, taxonomy, category, categories, smart, collection, smart taxonomy, smart collection, smart category, group, groups, smart grouping, collection of posts, smart group, post collection, post group, blog category, post, posts
 Requires at least: 3.0
-Tested up to: 3.8.1
-Stable tag: 1.0.5
+Tested up to: 3.8.2
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,12 @@ The plugin provides an easy way to automatically assign your posts to relevant c
 This plugin will be really helpful if your website has a huge number of post and post categories. The plugin minimizes the effort of manually assigning each and every post to relevant categories. 
 
 For example, if you create a post with a title "IPhone 5S Reviews" and you have categories like "IPhone", "Reviews" available, then the post gets automatically assigned to these categories.
+
+= Compatibility =
+The plugin is fully compatible with the recent versions of WordPress.
+
+* Compatible with older WordPress versions, down to 3.0.
+* Multilingual Support is included with the plugin and is fully compatible with WPML.
 
 = Configurable =
 WP Smart taxonomy is completely customizable. Among others, you may enable/disable smart category(ies), append with existing categories, choose whether to generate smart category associations from post titles and tags.
@@ -42,7 +48,7 @@ In case you feel compelled to rate this plugin less than 5 stars - please do men
 
 == Frequently Asked Questions ==
 = Does this plugin work with newest WP version and also older versions? =
-Yes, this plugin works really fine up to Wordpress 3.8.1! It is also compatible with older Wordpress versions, down to 3.0.
+Yes, this plugin works really fine up to Wordpress 3.8.2! It is also compatible with older Wordpress versions, down to 3.0.
 = I don't have any categories created in my Wordpress. How do I assign my existing posts using the plugin? =
 No worries. Just go and create your categories and come back and update your Wordpress posts. Voilà, there you have your smart collection of posts. :)
 
@@ -81,6 +87,9 @@ If you are looking for a Woocommerce compatible plugin, check out [Woocommerce S
 = 1.0.5 =
 * Minor tweaks to code.
 
+= 1.0.6 =
+* Bug Fix - Fixed matching of special characters in post title.
+
 
 ==Upgrade Notice==
 
@@ -101,3 +110,6 @@ If you are looking for a Woocommerce compatible plugin, check out [Woocommerce S
 
 = 1.0.5 =
 * Minor tweaks to code.
+
+= 1.0.6 =
+* Bug Fix - Fixed matching of special characters in post title.

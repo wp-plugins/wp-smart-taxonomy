@@ -89,7 +89,7 @@ class DC_Wp_Smart_Taxonomy_Admin {
     // Choose Samrt Cats from Post Title
     if($smart_cat_settings['is_title']) {
       foreach($post_categories as $post_category) {
-        if(strpos(strtolower($post_title), strtolower($post_category->name)) !== false) {
+        if(strpos(strtolower($post_title), wptexturize(strtolower($post_category->name))) !== false) {
           $smart_cats[] = $post_category->term_id;
         }
       }
