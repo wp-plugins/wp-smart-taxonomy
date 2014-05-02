@@ -3,8 +3,8 @@ Contributors: Dualcube
 Donate link: http://dualcube.com/
 Tags: automatic, taxonomy, category, categories, smart, collection, smart taxonomy, smart collection, smart category, group, groups, smart grouping, collection of posts, smart group, post collection, post group, blog category, post, posts
 Requires at least: 3.0
-Tested up to: 3.8.2
-Stable tag: 1.0.6
+Tested up to: 3.9
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,7 +48,7 @@ In case you feel compelled to rate this plugin less than 5 stars - please do men
 
 == Frequently Asked Questions ==
 = Does this plugin work with newest WP version and also older versions? =
-Yes, this plugin works really fine up to Wordpress 3.8.2! It is also compatible with older Wordpress versions, down to 3.0.
+Yes, this plugin works really fine up to Wordpress 3.9! It is also compatible with older Wordpress versions, down to 3.0.
 = I don't have any categories created in my Wordpress. How do I assign my existing posts using the plugin? =
 No worries. Just go and create your categories and come back and update your Wordpress posts. Voilà, there you have your smart collection of posts. :)
 
@@ -90,6 +90,9 @@ If you are looking for a Woocommerce compatible plugin, check out [Woocommerce S
 = 1.0.6 =
 * Bug Fix - Fixed matching of special characters in post title.
 
+= 1.0.7 =
+* Fixed Wordpress 3.9 compatibality issue.
+
 
 ==Upgrade Notice==
 
@@ -113,3 +116,6 @@ If you are looking for a Woocommerce compatible plugin, check out [Woocommerce S
 
 = 1.0.6 =
 * Bug Fix - Fixed matching of special characters in post title.
+
+= 1.0.7 =
+* Fixed Wordpress 3.9 compatibality issue.
