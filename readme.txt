@@ -3,15 +3,15 @@ Contributors: Dualcube
 Donate link: http://dualcube.com/
 Tags: automatic, taxonomy, category, categories, smart, collection, smart taxonomy, smart collection, smart category, group, groups, smart grouping, collection of posts, smart group, post collection, post group, blog category, post, posts
 Requires at least: 3.0
-Tested up to: 3.9
-Stable tag: 1.0.7
+Tested up to: 3.9.1
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 A cool new Wordpress plugin that helps you to make smart collection of posts.
 
 == Description ==
-The plugin provides an easy way to automatically assign your posts to relevant categories. The plugin looks up your post title and tags, matches the key words with already available categories and automatically assigns the post to those relevant categories. 
+The plugin provides an easy way to automatically assign your posts to relevant categories. The plugin looks up your post title, content, excerpt and tags, matches the key words with already available categories and automatically assigns the post to those relevant categories. 
 
 This plugin will be really helpful if your website has a huge number of post and post categories. The plugin minimizes the effort of manually assigning each and every post to relevant categories. 
 
@@ -22,11 +22,14 @@ The plugin is fully compatible with the recent versions of WordPress.
 
 * Compatible with older WordPress versions, down to 3.0.
 * Multilingual Support is included with the plugin and is fully compatible with WPML.
+* Support added for common importers like Wordpress Importer and WP All Import.
 
 = Configurable =
 WP Smart taxonomy is completely customizable. Among others, you may enable/disable smart category(ies), append with existing categories, choose whether to generate smart category associations from post titles and tags.
 
 From version 1.0.3 onwards, the settings can be overriden for individual posts.
+
+From version 1.0.8 onwards, collections can also be made using post content or excerpt.
 
 = Upcoming Features =
 The plugin now only works with default Wordpress posts and taxonomies. 
@@ -59,6 +62,8 @@ Not at this moment. But we are working on it.
 No. It presently works with default Wordpress posts and categories. Keep a look out for the updated version – the future version of the plugin will support custom post types and taxonomies. 
 If you are looking for a Woocommerce compatible plugin, check out [Woocommerce Smart Collection](http://wordpress.org/plugins/woocommerce-smart-collection/ "Woocommerce Smart Collection") .
 
+= Is the plugin compatible with importers? =
+There are tens and thousands of importers out there. We have tried to make the plugin compatible with common importers like Wordpress Importers and WP All Import.
 
 ==Screenshots==
 
@@ -93,6 +98,9 @@ If you are looking for a Woocommerce compatible plugin, check out [Woocommerce S
 = 1.0.7 =
 * Fixed Wordpress 3.9 compatibality issue.
 
+= 1.0.8 =
+* Added support for importers. Feature Enhancement - create smart taxonomies using post content and excerpt.
+
 
 ==Upgrade Notice==
 
@@ -119,3 +127,6 @@ If you are looking for a Woocommerce compatible plugin, check out [Woocommerce S
 
 = 1.0.7 =
 * Fixed Wordpress 3.9 compatibality issue.
+
+= 1.0.8 =
+* Added support for importers. Feature Enhancement - create smart taxonomies using post content and excerpt.

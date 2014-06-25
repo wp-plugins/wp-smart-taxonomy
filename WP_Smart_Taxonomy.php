@@ -4,7 +4,7 @@ Plugin Name: WP Smart Taxonomy
 Plugin URI: http://dualcube.com
 Description: A cool new Wordpress plugin that helps you to make smart collection of posts.
 Author: Dualcube
-Version: 1.0.7
+Version: 1.0.8
 Author URI: http://dualcube.com
 */
 

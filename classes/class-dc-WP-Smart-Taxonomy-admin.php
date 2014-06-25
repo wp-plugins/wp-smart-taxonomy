@@ -12,6 +12,12 @@ class DC_Wp_Smart_Taxonomy_Admin {
 		add_action( 'add_meta_boxes', array(&$this, 'add_custom_meta_boxes') );
 		
 		add_action( 'save_post', array(&$this, 'assign_smart_taxonomy') );
+		
+		// Add support for Wordpress Importer
+		add_action( 'wp_import_set_post_terms', array(&$this, 'do_smart_taxonomy_after_wp_import_set_post_terms'), 10, 4);
+		
+		// Add support for WP All Import
+		add_action( 'pmxi_saved_post', array(&$this, 'do_smart_taxonomy_after_pmxi_saved_post'), 10, 1);
 
 		$this->load_class('settings');
 		$this->settings = new DC_Wp_Smart_Taxonomy_Settings();
@@ -45,6 +51,8 @@ class DC_Wp_Smart_Taxonomy_Admin {
                              "is_enable" => array('label' => __('Enable Smart Category', $DC_Wp_Smart_Taxonomy->text_domain), 'type' => 'checkbox', 'name' => 'smart_cat_settings[is_enable]', 'value' => 'Enable', 'dfvalue' => $smart_cat_settings['is_enable']),
                              "is_append" => array('label' => __('Append with existing smart categories', $DC_Wp_Smart_Taxonomy->text_domain), 'type' => 'checkbox', 'name' => 'smart_cat_settings[is_append]', 'value' => 'Append', 'dfvalue' => $smart_cat_settings['is_append'], 'hints' => __('If unchecked will replace existing smart categories', $DC_Wp_Smart_Taxonomy->text_domain)),
                              "is_title" => array('label' => __('Generate Smart Category from Post Title', $DC_Wp_Smart_Taxonomy->text_domain), 'type' => 'checkbox', 'name' => 'smart_cat_settings[is_title]', 'value' => 'Title', 'dfvalue' => $smart_cat_settings['is_title']),
+                             "is_excerpt" => array('label' => __('Generate Smart Category from Post Excerpt', $DC_Wp_Smart_Taxonomy->text_domain), 'type' => 'checkbox', 'name' => 'smart_cat_settings[is_excerpt]', 'value' => 'Excerpt', 'dfvalue' => $smart_cat_settings['is_excerpt']),
+                             "is_content" => array('label' => __('Generate Smart Category from Post Content', $DC_Wp_Smart_Taxonomy->text_domain), 'type' => 'checkbox', 'name' => 'smart_cat_settings[is_content]', 'value' => 'Content', 'dfvalue' => $smart_cat_settings['is_content']),
                              "is_tag" => array('label' => __('Generate Smart Category from Post Tags', $DC_Wp_Smart_Taxonomy->text_domain), 'type' => 'checkbox', 'name' => 'smart_cat_settings[is_tag]', 'value' => 'Tag', 'dfvalue' => $smart_cat_settings['is_tag'])
                              );
     
@@ -81,7 +89,10 @@ class DC_Wp_Smart_Taxonomy_Admin {
     if(!$smart_cat_settings['is_enable'])
       return $post_id;
     
-    $post_title = get_the_title( $post_id );
+    $post_obj = get_post( $post_id );
+    $post_title = $post_obj->post_title;
+    $post_excerpt = $post_obj->post_excerpt;
+    $post_content = $post_obj->post_content;
     $post_tags = wp_get_post_tags( $post_id );
     
     $smart_cats = array();
@@ -90,6 +101,24 @@ class DC_Wp_Smart_Taxonomy_Admin {
     if($smart_cat_settings['is_title']) {
       foreach($post_categories as $post_category) {
         if(strpos(strtolower($post_title), wptexturize(strtolower($post_category->name))) !== false) {
+          $smart_cats[] = $post_category->term_id;
+        }
+      }
+    }
+    
+    // Choose Samrt Cats from Post Excerpt
+    if($smart_cat_settings['is_excerpt']) {
+      foreach($post_categories as $post_category) {
+        if(strpos(strtolower($post_excerpt), wptexturize(strtolower($post_category->name))) !== false) {
+          $smart_cats[] = $post_category->term_id;
+        }
+      }
+    }
+    
+    // Choose Samrt Cats from Post Content
+    if($smart_cat_settings['is_content']) {
+      foreach($post_categories as $post_category) {
+        if(strpos(strtolower($post_content), wptexturize(strtolower($post_category->name))) !== false) {
           $smart_cats[] = $post_category->term_id;
         }
       }
@@ -123,6 +152,24 @@ class DC_Wp_Smart_Taxonomy_Admin {
     }
     
     return $post_id;
+	}
+	
+	/**
+	 * Add support for wordpress importer
+	 */
+	function do_smart_taxonomy_after_wp_import_set_post_terms($tt_ids, $ids, $tax, $post_id) {
+	  global $DC_Wp_Smart_Taxonomy;
+	  
+	  $this->assign_smart_taxonomy($post_id);
+	}
+	
+	/**
+	 * Add support for WP All Import
+	 */
+	function do_smart_taxonomy_after_pmxi_saved_post($post_id) {
+	  global $DC_Wp_Smart_Taxonomy;
+	  
+	  $this->assign_smart_taxonomy($post_id);
 	}
 
 	function load_class($class_name = '') {
@@ -158,9 +205,6 @@ class DC_Wp_Smart_Taxonomy_Admin {
 		// Enqueue admin script and stylesheet from here
 		if (in_array( $screen->id, array( 'toplevel_page_dc-WP-ST-setting-admin' ))) :   
 		  $DC_Wp_Smart_Taxonomy->library->load_qtip_lib();
-		  $DC_Wp_Smart_Taxonomy->library->load_upload_lib();
-		  $DC_Wp_Smart_Taxonomy->library->load_colorpicker_lib();
-		  $DC_Wp_Smart_Taxonomy->library->load_datepicker_lib();
 		  wp_enqueue_script('admin_js', $DC_Wp_Smart_Taxonomy->plugin_url.'assets/admin/js/admin.js', array('jquery'), $DC_Wp_Smart_Taxonomy->version, true);
 		  wp_enqueue_style('admin_css',  $DC_Wp_Smart_Taxonomy->plugin_url.'assets/admin/css/admin.css', array(), $DC_Wp_Smart_Taxonomy->version);
 	  endif;
