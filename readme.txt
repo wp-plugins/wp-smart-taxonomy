@@ -1,10 +1,10 @@
 ﻿=== WP Smart Taxonomy ===
-Contributors: Dualcube
+Contributors: Dualcube, arimghosh
 Donate link: http://dualcube.com/
 Tags: automatic, taxonomy, category, categories, smart, collection, smart taxonomy, smart collection, smart category, group, groups, smart grouping, collection of posts, smart group, post collection, post group, blog category, post, posts
 Requires at least: 3.0
-Tested up to: 3.9.1
-Stable tag: 1.0.8
+Tested up to: 4.1.1
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -101,6 +101,9 @@ There are tens and thousands of importers out there. We have tried to make the p
 = 1.0.8 =
 * Added support for importers. Feature Enhancement - create smart taxonomies using post content and excerpt.
 
+= 1.0.9 =
+* Fixed Wordpress 4.1.* compatibality issue.
+
 
 ==Upgrade Notice==
 
@@ -130,3 +133,6 @@ There are tens and thousands of importers out there. We have tried to make the p
 
 = 1.0.8 =
 * Added support for importers. Feature Enhancement - create smart taxonomies using post content and excerpt.
+
+= 1.0.9 =
+* Fixed Wordpress 4.1.* compatibality issue.
